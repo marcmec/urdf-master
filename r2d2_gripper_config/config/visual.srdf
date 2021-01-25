@@ -1,0 +1,164 @@
+<?xml version="1.0" ?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="visual">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="garra">
+        <joint name="right_gripper_joint" />
+        <joint name="left_gripper_joint" />
+        <joint name="gripper_extension" />
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="idle" group="garra">
+        <joint name="gripper_extension" value="-0.38" />
+        <joint name="left_gripper_joint" value="0" />
+        <joint name="right_gripper_joint" value="0" />
+    </group_state>
+    <group_state name="extension" group="garra">
+        <joint name="gripper_extension" value="0" />
+        <joint name="left_gripper_joint" value="0" />
+        <joint name="right_gripper_joint" value="0" />
+    </group_state>
+    <group_state name="abertura" group="garra">
+        <joint name="gripper_extension" value="0" />
+        <joint name="left_gripper_joint" value="0.4784" />
+        <joint name="right_gripper_joint" value="0.4905" />
+    </group_state>
+    <group_state name="fecha" group="garra">
+        <joint name="gripper_extension" value="0" />
+        <joint name="left_gripper_joint" value="0" />
+        <joint name="right_gripper_joint" value="0" />
+    </group_state>
+    <group_state name="idle_show" group="garra">
+        <joint name="gripper_extension" value="-0.1701" />
+        <joint name="left_gripper_joint" value="0" />
+        <joint name="right_gripper_joint" value="0" />
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="box" reason="User" />
+    <disable_collisions link1="base_link" link2="gripper_pole" reason="User" />
+    <disable_collisions link1="base_link" link2="head" reason="User" />
+    <disable_collisions link1="base_link" link2="left_back_wheel" reason="User" />
+    <disable_collisions link1="base_link" link2="left_base" reason="User" />
+    <disable_collisions link1="base_link" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="base_link" link2="left_gripper" reason="User" />
+    <disable_collisions link1="base_link" link2="left_leg" reason="User" />
+    <disable_collisions link1="base_link" link2="left_tip" reason="User" />
+    <disable_collisions link1="base_link" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="base_link" link2="right_base" reason="User" />
+    <disable_collisions link1="base_link" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="base_link" link2="right_gripper" reason="User" />
+    <disable_collisions link1="base_link" link2="right_leg" reason="User" />
+    <disable_collisions link1="base_link" link2="right_tip" reason="User" />
+    <disable_collisions link1="box" link2="gripper_pole" reason="User" />
+    <disable_collisions link1="box" link2="head" reason="User" />
+    <disable_collisions link1="box" link2="left_back_wheel" reason="User" />
+    <disable_collisions link1="box" link2="left_base" reason="User" />
+    <disable_collisions link1="box" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="box" link2="left_gripper" reason="User" />
+    <disable_collisions link1="box" link2="left_leg" reason="User" />
+    <disable_collisions link1="box" link2="left_tip" reason="User" />
+    <disable_collisions link1="box" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="box" link2="right_base" reason="User" />
+    <disable_collisions link1="box" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="box" link2="right_gripper" reason="User" />
+    <disable_collisions link1="box" link2="right_leg" reason="User" />
+    <disable_collisions link1="box" link2="right_tip" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="head" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_back_wheel" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_base" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_gripper" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_leg" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="left_tip" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_base" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_gripper" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_leg" reason="User" />
+    <disable_collisions link1="gripper_pole" link2="right_tip" reason="User" />
+    <disable_collisions link1="head" link2="left_back_wheel" reason="User" />
+    <disable_collisions link1="head" link2="left_base" reason="User" />
+    <disable_collisions link1="head" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="head" link2="left_gripper" reason="User" />
+    <disable_collisions link1="head" link2="left_leg" reason="User" />
+    <disable_collisions link1="head" link2="left_tip" reason="User" />
+    <disable_collisions link1="head" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="head" link2="right_base" reason="User" />
+    <disable_collisions link1="head" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="head" link2="right_gripper" reason="User" />
+    <disable_collisions link1="head" link2="right_leg" reason="User" />
+    <disable_collisions link1="head" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="left_base" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="left_gripper" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="left_leg" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="left_tip" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_base" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_back_wheel" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_base" link2="left_front_wheel" reason="User" />
+    <disable_collisions link1="left_base" link2="left_gripper" reason="User" />
+    <disable_collisions link1="left_base" link2="left_leg" reason="User" />
+    <disable_collisions link1="left_base" link2="left_tip" reason="User" />
+    <disable_collisions link1="left_base" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_base" link2="right_base" reason="User" />
+    <disable_collisions link1="left_base" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_base" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_base" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_base" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="left_gripper" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="left_leg" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="left_tip" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_base" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_front_wheel" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_gripper" link2="left_leg" reason="User" />
+    <disable_collisions link1="left_gripper" link2="left_tip" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_base" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_gripper" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_leg" link2="left_tip" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_base" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_leg" link2="right_tip" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_back_wheel" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_base" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_gripper" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_leg" reason="User" />
+    <disable_collisions link1="left_tip" link2="right_tip" reason="User" />
+    <disable_collisions link1="right_back_wheel" link2="right_base" reason="User" />
+    <disable_collisions link1="right_back_wheel" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="right_back_wheel" link2="right_gripper" reason="User" />
+    <disable_collisions link1="right_back_wheel" link2="right_leg" reason="User" />
+    <disable_collisions link1="right_back_wheel" link2="right_tip" reason="User" />
+    <disable_collisions link1="right_base" link2="right_front_wheel" reason="User" />
+    <disable_collisions link1="right_base" link2="right_gripper" reason="User" />
+    <disable_collisions link1="right_base" link2="right_leg" reason="User" />
+    <disable_collisions link1="right_base" link2="right_tip" reason="User" />
+    <disable_collisions link1="right_front_wheel" link2="right_gripper" reason="User" />
+    <disable_collisions link1="right_front_wheel" link2="right_leg" reason="User" />
+    <disable_collisions link1="right_front_wheel" link2="right_tip" reason="User" />
+    <disable_collisions link1="right_gripper" link2="right_leg" reason="User" />
+    <disable_collisions link1="right_gripper" link2="right_tip" reason="User" />
+    <disable_collisions link1="right_leg" link2="right_tip" reason="User" />
+</robot>

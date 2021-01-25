@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: urdf_tutorial
+    relative_path: urdf/06-flexible.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/visual.srdf
+  CONFIG:
+    author_name: marcos_r2d2
+    author_email: viniciuslag@gmail.com
+    generated_timestamp: 1611537770
